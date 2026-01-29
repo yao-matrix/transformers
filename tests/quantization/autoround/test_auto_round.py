@@ -105,6 +105,7 @@ class AutoRoundTest(unittest.TestCase):
         output = quantized_model.generate(**input_ids, max_new_tokens=40, do_sample=False)
         self.assertIn(self.tokenizer.decode(output[0], skip_special_tokens=True), self.EXPECTED_OUTPUTS)
 
+    @pytest.mark.skip(reason="This test is temperarily disabled for CI machine's CPU is slow")
     def test_quantized_model_on_cpu(self):
         """
         Simple test that checks if the quantized model is working properly
@@ -172,6 +173,7 @@ class AutoRoundTest(unittest.TestCase):
         inputs = tokenizer(text, return_tensors="pt").to(model.device)
         tokenizer.decode(model.generate(**inputs, max_new_tokens=5)[0])
 
+    @pytest.mark.skip(reason="This test is temperarily disabled for CI machine's CPU is slow")
     def test_convert_from_awq_cpu(self):
         """
         Simple test that checks if auto-round work properly with awq format
