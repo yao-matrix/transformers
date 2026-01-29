@@ -15,6 +15,8 @@ import gc
 import tempfile
 import unittest
 
+import pytest
+
 from transformers import AutoModelForCausalLM, AutoRoundConfig, AutoTokenizer
 from transformers.testing_utils import (
     backend_empty_cache,
